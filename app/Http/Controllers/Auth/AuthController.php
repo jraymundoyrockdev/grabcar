@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace GrabCarJem\Http\Controllers\Auth;
 
-use App\User;
+use GrabCarJem\User;
 use Validator;
-use App\Http\Controllers\Controller;
+use GrabCarJem\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 

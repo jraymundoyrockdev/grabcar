@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace GrabCarJem\Events;
 
 abstract class Event
 {

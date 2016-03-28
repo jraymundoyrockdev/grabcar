@@ -151,10 +151,16 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        GrabCarJem\Providers\AppServiceProvider::class,
+        GrabCarJem\Providers\AuthServiceProvider::class,
+        GrabCarJem\Providers\EventServiceProvider::class,
+        GrabCarJem\Providers\RouteServiceProvider::class,
+
+        /*
+         * Other Service Providers..
+         */
+        Collective\Html\HtmlServiceProvider::class,
+        GrabCarJem\Providers\RepositoryServiceProvider::class
 
     ],
 
@@ -201,6 +207,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class
 
     ],
 

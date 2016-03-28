@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Jobs;
+namespace GrabCarJem\Jobs;
 
 use Illuminate\Bus\Queueable;
 

@@ -1,5 +1,6 @@
 <?php
 
 Route::group(['middleware' => ['web']], function () {
-    Route::resource('transaction', 'TransactionController');
+    Route::resource('income', 'IncomeTransactionsController');
+    Route::resource('expense', 'ExpenseTransactionsController');
 });
