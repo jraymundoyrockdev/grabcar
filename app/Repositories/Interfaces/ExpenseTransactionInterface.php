@@ -1,6 +1,6 @@
 <?php namespace TsuperNgBuhayTNVS\Repositories\Interfaces;
 
-interface IncomeTransactionInterface
+interface ExpenseTransactionInterface
 {
     /**
      * Create
@@ -9,12 +9,5 @@ interface IncomeTransactionInterface
      * @return mixed
      */
     public function create($payload);
-
-    /**
-     * Fetch all income
-     *
-     * @return mixed
-     */
-    public function all();
 
 }

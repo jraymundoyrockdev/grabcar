@@ -1,6 +1,6 @@
 <?php
 
-namespace GrabCarJem\Http\Middleware;
+namespace TsuperNgBuhayTNVS\Http\Middleware;
 
 use Illuminate\Cookie\Middleware\EncryptCookies as BaseEncrypter;
 

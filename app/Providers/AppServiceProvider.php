@@ -1,6 +1,6 @@
 <?php
 
-namespace GrabCarJem\Providers;
+namespace TsuperNgBuhayTNVS\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

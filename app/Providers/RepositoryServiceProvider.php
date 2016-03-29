@@ -1,12 +1,13 @@
-<?php namespace GrabCarJem\Providers;
+<?php namespace TsuperNgBuhayTNVS\Providers;
 
-use GrabCarJem\Repositories\Eloquent\IncomeTransactionEloquent;
-use GrabCarJem\Repositories\Interfaces\IncomeTransactionInterface;
+use TsuperNgBuhayTNVS\Repositories\Eloquent\ExpenseTransactionEloquent;
+use TsuperNgBuhayTNVS\Repositories\Eloquent\IncomeTransactionEloquent;
+use TsuperNgBuhayTNVS\Repositories\Interfaces\ExpenseTransactionInterface;
+use TsuperNgBuhayTNVS\Repositories\Interfaces\IncomeTransactionInterface;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
-
     /**
      * Register repository IoC bindings
      *
@@ -15,5 +16,6 @@ class RepositoryServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(IncomeTransactionInterface::class, IncomeTransactionEloquent::class);
+        $this->app->bind(ExpenseTransactionInterface::class, ExpenseTransactionEloquent::class);
     }
 }

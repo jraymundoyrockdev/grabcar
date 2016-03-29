@@ -1,6 +1,6 @@
 <?php
 
-namespace GrabCarJem\Console\Commands;
+namespace TsuperNgBuhayTNVS\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Foundation\Inspiring;

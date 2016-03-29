@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => GrabCarJem\User::class,
+            'model' => TsuperNgBuhayTNVS\User::class,
         ],
 
         // 'users' => [

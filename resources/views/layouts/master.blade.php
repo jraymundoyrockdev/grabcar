@@ -38,10 +38,9 @@
     {!! Html::script('js/lib/bootstrap.min.js') !!}
     {!! Html::script('js/lib/widgster.js') !!}
     {!! Html::script('js/lib/underscore.js') !!}
-
     {!! Html::script('js/lib/app.js') !!}
     {!! Html::script('js/lib/settings.js') !!}
-
+    {!! Html::script('js/lib/jquery.dataTables.min.js') !!}
 
     @section('module-scripts')@show
 

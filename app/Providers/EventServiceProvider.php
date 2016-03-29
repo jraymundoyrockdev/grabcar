@@ -1,6 +1,6 @@
 <?php
 
-namespace GrabCarJem\Providers;
+namespace TsuperNgBuhayTNVS\Providers;
 
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -13,8 +13,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'GrabCarJem\Events\SomeEvent' => [
-            'GrabCarJem\Listeners\EventListener',
+        'TsuperNgBuhayTNVS\Events\SomeEvent' => [
+            'TsuperNgBuhayTNVS\Listeners\EventListener',
         ],
     ];
 

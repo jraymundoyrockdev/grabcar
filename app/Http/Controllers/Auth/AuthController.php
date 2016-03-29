@@ -1,10 +1,10 @@
 <?php
 
-namespace GrabCarJem\Http\Controllers\Auth;
+namespace TsuperNgBuhayTNVS\Http\Controllers\Auth;
 
-use GrabCarJem\User;
+use TsuperNgBuhayTNVS\User;
 use Validator;
-use GrabCarJem\Http\Controllers\Controller;
+use TsuperNgBuhayTNVS\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 

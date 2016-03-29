@@ -1,8 +1,8 @@
 <?php
 
-namespace GrabCarJem\Http\Controllers\Auth;
+namespace TsuperNgBuhayTNVS\Http\Controllers\Auth;
 
-use GrabCarJem\Http\Controllers\Controller;
+use TsuperNgBuhayTNVS\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class PasswordController extends Controller

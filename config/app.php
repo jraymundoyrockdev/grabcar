@@ -151,16 +151,16 @@ return [
         /*
          * Application Service Providers...
          */
-        GrabCarJem\Providers\AppServiceProvider::class,
-        GrabCarJem\Providers\AuthServiceProvider::class,
-        GrabCarJem\Providers\EventServiceProvider::class,
-        GrabCarJem\Providers\RouteServiceProvider::class,
+        TsuperNgBuhayTNVS\Providers\AppServiceProvider::class,
+        TsuperNgBuhayTNVS\Providers\AuthServiceProvider::class,
+        TsuperNgBuhayTNVS\Providers\EventServiceProvider::class,
+        TsuperNgBuhayTNVS\Providers\RouteServiceProvider::class,
 
         /*
          * Other Service Providers..
          */
         Collective\Html\HtmlServiceProvider::class,
-        GrabCarJem\Providers\RepositoryServiceProvider::class
+        TsuperNgBuhayTNVS\Providers\RepositoryServiceProvider::class
 
     ],
 

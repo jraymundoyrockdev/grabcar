@@ -1,10 +1,10 @@
 <?php
 
-namespace GrabCarJem\Http\Controllers;
+namespace TsuperNgBuhayTNVS\Http\Controllers;
 
-use GrabCarJem\Http\Requests;
-use GrabCarJem\Http\Requests\IncomeTransactionRequest;
-use GrabCarJem\Repositories\Interfaces\IncomeTransactionInterface;
+use TsuperNgBuhayTNVS\Http\Requests;
+use TsuperNgBuhayTNVS\Http\Requests\IncomeTransactionRequest;
+use TsuperNgBuhayTNVS\Repositories\Interfaces\IncomeTransactionInterface;
 
 class IncomeTransactionsController extends Controller
 {
@@ -38,7 +38,7 @@ class IncomeTransactionsController extends Controller
         $income = $this->income->create($request->all());
 
         if ($income) {
-            \Session::flash('flash_success', 'Sucessfully Sav');
+            \Session::flash('flash_success', 'Successfully Save');
         }
 
         return redirect()->route('income.create');

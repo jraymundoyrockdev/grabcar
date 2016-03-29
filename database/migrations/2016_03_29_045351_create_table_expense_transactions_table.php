@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableIncomeTransactionsTable extends Migration
+class CreateTableExpenseTransactionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,10 @@ class CreateTableIncomeTransactionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('income_transactions', function (Blueprint $table) {
+        Schema::create('expense_transactions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('fare');
+            $table->integer('amount');
             $table->timestamp('transaction_date_time')->useCurrent = true;
-            $table->integer('discount')->default(0);
             $table->integer('created_by');
             $table->text('type');
             $table->text('remarks');
@@ -31,6 +30,6 @@ class CreateTableIncomeTransactionsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('income_transactions');
+        Schema::drop('expense_transactions');
     }
 }

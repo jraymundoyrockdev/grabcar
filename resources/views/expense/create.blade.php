@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('main-body')
 
-    <h2 class="page-title">Income
+    <h2 class="page-title">Expense
         <small>Transaction</small>
     </h2>
 
@@ -10,7 +10,7 @@
             <section class="widget">
                 <header>
                     <h4>
-                        <i class="fa fa-cogs"></i> Create New Income Transaction
+                        <i class="fa fa-cogs"></i> Create New Expense Transaction
                     </h4>
                 </header>
 
@@ -31,31 +31,26 @@
                         </ul>
                     @endif
 
-                    {!! Form::open(['route' => ['transactions.store']]) !!}
+                    {!! Form::open(['route' => ['expense.store']]) !!}
 
                     <fieldset>
                         <div class="form-group">
-                            {!! Form::label('type', 'Income Type') !!} <br>
+                            {!! Form::label('type', 'Expense Type') !!} <br>
                             {!! Form::select(
                             'type',
-                            ['grab' => 'GRAB', 'rent' => 'RENT'],
-                            'grab',
+                            ['gas' => 'Gas', 'others' => 'Others'],
+                            'gas',
                             ['class' => 'form-control']) !!}
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('fare', 'Rider Fare') !!}
-                            {!! Form::text('fare', '0', ['class' => 'form-control']) !!}
+                            {!! Form::label('amount', 'Expense Amount') !!}
+                            {!! Form::text('amount', '0', ['class' => 'form-control']) !!}
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('trip_date_time', 'Trip Date') !!}
-                            {!! Form::text('trip_date_time', '', ['class' => 'form-control date-picker']) !!}
-                        </div>
-
-                        <div class="form-group">
-                            {!! Form::label('discount', 'Discount (optional)') !!}
-                            {!! Form::text('discount', '0', ['class' => 'form-control']) !!}
+                            {!! Form::label('transaction_date_time', 'Expense Date') !!}
+                            {!! Form::text('transaction_date_time', '', ['class' => 'form-control transactions-date-picker']) !!}
                         </div>
 
                         <div class="form-group">
@@ -71,7 +66,7 @@
                             <div class="row text-align-right">
                                 <div class="col-sm-8 col-sm-offset-4">
                                     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                                    {!! Html::linkRoute('transactions.index', 'Cancel',[], ['class' => 'btn btn-default']) !!}
+                                    {!! Html::linkRoute('expense.index', 'Cancel',[], ['class' => 'btn btn-default']) !!}
                                 </div>
                             </div>
                         </div>
@@ -92,7 +87,7 @@
     {!! Html::script('js/lib/bootstrap-datetimepicker.min.js') !!}
     <script type="text/javascript">
         $(function () {
-            $('.date-picker').datetimepicker({
+            $('.transactions-date-picker').datetimepicker({
                 format: 'YYYY-MM-DD hh:mm:ss',
                 showClear: true,
                 defaultDate: new Date(),

@@ -49,8 +49,8 @@
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('trip_date_time', 'Trip Date') !!}
-                            {!! Form::text('trip_date_time', '', ['class' => 'form-control date-picker']) !!}
+                            {!! Form::label('transaction_date_time', 'Income Date') !!}
+                            {!! Form::text('transaction_date_time', '', ['class' => 'form-control transactions-date-picker']) !!}
                         </div>
 
                         <div class="form-group">
@@ -91,13 +91,15 @@
     {!! Html::script('js/lib/moment.js') !!}
     {!! Html::script('js/lib/bootstrap-datetimepicker.min.js') !!}
     <script type="text/javascript">
-        $(function () {
-            $('.date-picker').datetimepicker({
+
+        $(document).ready(function(){
+            $('.transactions-date-picker').datetimepicker({
                 format: 'YYYY-MM-DD hh:mm:ss',
                 showClear: true,
                 defaultDate: new Date(),
                 maxDate: new Date()
             });
         });
+
     </script>
 @endsection

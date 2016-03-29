@@ -30,7 +30,7 @@ return [
     ],
 
     'stripe' => [
-        'model' => GrabCarJem\User::class,
+        'model' => TsuperNgBuhayTNVS\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],

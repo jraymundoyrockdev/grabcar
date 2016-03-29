@@ -1,6 +1,6 @@
 <?php
 
-namespace GrabCarJem\Events;
+namespace TsuperNgBuhayTNVS\Events;
 
 abstract class Event
 {

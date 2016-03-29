@@ -1,6 +1,6 @@
 <?php
 
-namespace GrabCarJem\Providers;
+namespace TsuperNgBuhayTNVS\Providers;
 
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -14,7 +14,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'GrabCarJem\Http\Controllers';
+    protected $namespace = 'TsuperNgBuhayTNVS\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.

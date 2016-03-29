@@ -2,7 +2,7 @@
 
 namespace TsuperNgBuhayTNVS\Http\Requests;
 
-class IncomeTransactionRequest extends Request
+class ExpenseTransactionRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +22,7 @@ class IncomeTransactionRequest extends Request
     public function rules()
     {
         return [
-            'fare' => 'required|integer|min:1',
+            'amount' => 'required|integer|min:1',
             'type' => 'required',
             'created_by' => 'required|integer',
             'transaction_date_time' => 'required'
@@ -32,8 +32,9 @@ class IncomeTransactionRequest extends Request
     public function messages()
     {
         return [
-            'fare.integer' => 'Fare must be a number',
-            'fare.min' => 'Fare must be at least 1 peso',
+            'amount.required' => 'Amount is required',
+            'amount.integer' => 'Amount must be a number',
+            'amount.min' => 'Fare must be at least 1 peso',
         ];
     }
 }

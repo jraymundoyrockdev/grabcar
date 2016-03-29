@@ -1,6 +1,6 @@
 <?php
 
-namespace GrabCarJem\Exceptions;
+namespace TsuperNgBuhayTNVS\Exceptions;
 
 use Exception;
 use Illuminate\Validation\ValidationException;

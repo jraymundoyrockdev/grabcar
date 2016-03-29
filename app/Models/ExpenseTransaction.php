@@ -4,14 +4,13 @@ namespace TsuperNgBuhayTNVS\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class IncomeTransaction extends Model
+class ExpenseTransaction extends Model
 {
-    protected $table = 'income_transactions';
+    protected $table = 'expense_transactions';
 
     protected $fillable = [
-        'fare',
+        'amount',
         'transaction_date_time',
-        'discount',
         'remarks',
         'created_by',
         'type'

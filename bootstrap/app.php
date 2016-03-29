@@ -28,17 +28,17 @@ $app = new Illuminate\Foundation\Application(
 
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,
-    GrabCarJem\Http\Kernel::class
+    TsuperNgBuhayTNVS\Http\Kernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
-    GrabCarJem\Console\Kernel::class
+    TsuperNgBuhayTNVS\Console\Kernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    GrabCarJem\Exceptions\Handler::class
+    TsuperNgBuhayTNVS\Exceptions\Handler::class
 );
 
 /*

@@ -1,6 +1,6 @@
 <?php
 
-namespace GrabCarJem\Http\Middleware;
+namespace TsuperNgBuhayTNVS\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;

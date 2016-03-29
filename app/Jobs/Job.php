@@ -1,6 +1,6 @@
 <?php
 
-namespace GrabCarJem\Jobs;
+namespace TsuperNgBuhayTNVS\Jobs;
 
 use Illuminate\Bus\Queueable;
 
