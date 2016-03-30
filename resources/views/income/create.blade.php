@@ -54,11 +54,6 @@
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('discount', 'Discount (optional)') !!}
-                            {!! Form::text('discount', '0', ['class' => 'form-control']) !!}
-                        </div>
-
-                        <div class="form-group">
                             {!! Form::label('remarks', 'Remarks (optional)') !!}
                             {!! Form::textarea('remarks', null, ['class' => 'form-control', 'size' => '30x2']) !!}
                         </div>
