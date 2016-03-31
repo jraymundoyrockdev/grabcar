@@ -22,7 +22,6 @@
                                 <th>Date</th>
                                 <th>Amount</th>
                                 <th class="no-sort">Type</th>
-                                <th>Discount</th>
                                 <th class="hidden-xs">Remarks</th>
 
                             </tr>
@@ -34,7 +33,6 @@
                                     <td>{!! $income->transaction_date_time !!}</td>
                                     <td>{!! $income->fare !!}</td>
                                     <td class="width-150">{!! $income->type !!}</td>
-                                    <td>{!! $income->discount !!}</td>
                                     <td class="hidden-xs">{!! $income->remarks !!}</td>
                                 </tr>
                             @empty

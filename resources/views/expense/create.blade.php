@@ -81,10 +81,6 @@
 @endsection
 
 @section('module-scripts')
-    {!! Html::script('js/lib/bootstrap-select.min.js') !!}
-    {!! Html::script('js/lib/select2.min.js') !!}
-    {!! Html::script('js/lib/moment.js') !!}
-    {!! Html::script('js/lib/bootstrap-datetimepicker.min.js') !!}
     <script type="text/javascript">
         $(function () {
             $('.transactions-date-picker').datetimepicker({

@@ -110,6 +110,42 @@ function initPjax() {
             $('.dataTables_filter').remove();
             $('.dataTables_length').remove();
             $('.paginate_button').addClass('btn btn-xs btn-primary');
+
+
+
+
+                    $('#container').highcharts({
+                        data: {
+                            table: 'datatable'
+                        },
+                        chart: {
+                            type: 'bar'
+                        },
+                        title: {
+                            text: 'Daily Total Income'
+                        },
+                        yAxis: {
+                            allowDecimals: false,
+                            title: {
+                                text: 'Units'
+                            }
+                        },
+                        exporting:{
+                            enabled: false
+                        },
+                        credits:{
+                            enabled: false
+                        },
+                        tooltip: {
+                            formatter: function () {
+                                return '<b>' + this.series.name + '</b><br/>' +
+                                    this.point.y + ' ' + this.point.name.toLowerCase();
+                            }
+                        },
+
+                        polar: true
+                    });
+
             $(document).trigger("pjax-app:loaded"), l.log("scripts loaded.")
         })
 

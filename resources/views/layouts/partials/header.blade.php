@@ -7,7 +7,7 @@
                     <i class="fa fa-bars"></i>
                 </a>
             </li>
-            <li class="hidden-xs"><a href="login.html"><i class="glyphicon glyphicon-off"></i></a></li>
+            <li class="hidden-xs"><a href="#"><i class="glyphicon glyphicon-off"></i></a></li>
         </ul>
     </div>
-</header>
+</header>   

@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <title>Grab Car Jem</title>
 
-    {!! Html::style('css/application.min.css') !!}
+    {!! Html::style('css/libraries.css') !!}
 
     @section('module-styles')@show
 
@@ -33,14 +33,8 @@
         @section('main-body')@show
     </div>
 
-    {!! Html::script('js/lib/jquery.min.js') !!}
-    {!! Html::script('js/lib/jquery.pjax.js') !!}
-    {!! Html::script('js/lib/bootstrap.min.js') !!}
-    {!! Html::script('js/lib/widgster.js') !!}
-    {!! Html::script('js/lib/underscore.js') !!}
-    {!! Html::script('js/lib/app.js') !!}
-    {!! Html::script('js/lib/settings.js') !!}
-    {!! Html::script('js/lib/jquery.dataTables.min.js') !!}
+    {!! Html::script('js/libraries.js') !!}
+
 
     @section('module-scripts')@show
 

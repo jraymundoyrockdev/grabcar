@@ -17,4 +17,12 @@ interface IncomeTransactionInterface
      */
     public function all();
 
+    /**
+     * Get last transactions from to date
+     * 
+     * @param $from
+     * @param $to
+     * @return mixed
+     */
+    public function getTransactionsFromTo($from, $to);
 }
