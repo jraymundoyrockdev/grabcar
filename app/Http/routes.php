@@ -1,6 +1,7 @@
 <?php
 
 Route::group(['middleware' => ['web']], function () {
+    Route::resource('/', 'DashboardController', ['only' => 'index']);
     Route::resource('income', 'IncomeTransactionsController');
     Route::resource('expense', 'ExpenseTransactionsController');
     Route::resource('dashboard', 'DashboardController', ['only' => 'index']);

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="token" content="{{ Session::token() }}"/>
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
-    <title>Grab Car Jem</title>
+    <title>TNVS Transactions Monitoring System</title>
 
     {!! Html::style('css/libraries.css') !!}
 
@@ -17,7 +17,7 @@
 
 <div class="logo">
     <h4>
-        <a href="index.html">GrabCar <strong>Jem</strong></a>
+        {!! Html::decode(link_to_route('dashboard.index', 'TNVS Transactions <strong> Monitoring System</strong>', [], [])) !!}
     </h4>
 </div>
 
