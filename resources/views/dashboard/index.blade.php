@@ -18,14 +18,16 @@
                         <tr>
                             <th></th>
                             <th>Income</th>
+                            <th>Expense</th>
                         </tr>
                         </thead>
                         <tbody>
 
-                        @foreach($incomeDailyTotals as $incomeDailyTotal)
+                        @foreach($transactionDailyTotals as $transaction)
                             <tr>
-                                <th>{!! $incomeDailyTotal['date'] !!}</th>
-                                <td>{!! $incomeDailyTotal['total'] !!}</td>
+                                <th>{!! $transaction['date'] !!}</th>
+                                <td>{!! $transaction['income'] !!}</td>
+                                <td>{!! $transaction['expense']!!}</td>
                             </tr>
                         @endforeach
 
@@ -34,9 +36,13 @@
 
                     <div class="visits-info well well-sm">
                         <div class="row">
-                            <div class="col-sm-12 col-xs-12">
+                            <div class="col-sm-6 col-xs-6">
                                 <div class="key"><i class="fa fa-users"></i> Total Income</div>
                                 <div class="value">{!! number_format($incomeTotal) !!}</div>
+                            </div>
+                            <div class="col-sm-6 col-xs-6">
+                                <div class="key"><i class="fa fa-users"></i> Total Expense</div>
+                                <div class="value">{!! number_format($expenseTotal) !!}</div>
                             </div>
                         </div>
                     </div>
@@ -58,19 +64,19 @@
                     table: 'datatable'
                 },
                 chart: {
-                    type: 'bar'
+                    type: 'column'
                 },
                 title: {
-                    text: 'Wekk Total Income'
+                    text: 'Daily Total Transactions'
                 },
                 yAxis: {
                     allowDecimals: false,
                     title: {
-                        text: ''
+                        text: 'Pesos'
                     }
                 },
                 exporting: {
-                    enabled: false
+                    enabled: true
                 },
                 credits: {
                     enabled: false

@@ -4,6 +4,7 @@ namespace TsuperNgBuhayTNVS\Http\Controllers;
 
 use TsuperNgBuhayTNVS\Http\Requests;
 use TsuperNgBuhayTNVS\Repositories\Interfaces\IncomeTransactionInterface;
+use TsuperNgBuhayTNVS\Repositories\Interfaces\ExpenseTransactionInterface;
 
 class DashboardController extends Controller
 {
@@ -11,21 +12,31 @@ class DashboardController extends Controller
      * @var IncomeTransactionInterface
      */
     private $income;
+    /**
+     * @var ExpenseTransactionInterface
+     */
+    private $expense;
 
     /**
      * DashboardController constructor.
      * @param IncomeTransactionInterface $income
+     * @param ExpenseTransactionInterface $expense
      */
-    public function __construct(IncomeTransactionInterface $income)
+    public function __construct(IncomeTransactionInterface $income, ExpenseTransactionInterface $expense)
     {
         $this->income = $income;
+        $this->expense = $expense;
     }
 
     public function index()
     {
-        list($incomeTotal, $incomeDailyTotals) = $this->getIncomeTotals('monday', 'sunday');
+        list($incomeTotal, $expenseTotal, $transactionDailyTotals) = $this->getTransactionTotals();
 
-        return view('dashboard.index', ['incomeTotal' => $incomeTotal, 'incomeDailyTotals' => $incomeDailyTotals]);
+        return view('dashboard.index', [
+            'incomeTotal' => $incomeTotal,
+            'expenseTotal' => $expenseTotal,
+            'transactionDailyTotals' => $transactionDailyTotals
+        ]);
     }
 
     /**
@@ -35,22 +46,30 @@ class DashboardController extends Controller
      * @param $to
      * @return array
      */
-    private function getIncomeTotals($from, $to)
+    private function getTransactionTotals($from = 'monday', $to = 'sunday')
     {
-        $total = 0;
+        $incomeTotal = 0;
+        $expenseTotal = 0;
 
         $dateFrom = $this->getDateThisWeek($from);
         $dateTo = $this->getDateThisWeek($to);
 
-        $incomeTotals = $this->createZeroTotalsPerDay(7);
-        $totalsThisWeek = $this->income->getTransactionsFromTo($dateFrom, $dateTo);
+        $transactionDailyTotals = $this->createZeroTotalsPerDay();
 
-        foreach ($totalsThisWeek as $totalThisWeek) {
-            $incomeTotals[$totalThisWeek->transaction_date]['total'] = $totalThisWeek->total;
-            $total += $totalThisWeek->total;
+        $weekIncomeTransactions = $this->income->getTransactionsFromTo($dateFrom, $dateTo);
+        $weekExpenseTransactions = $this->expense->getTransactionsFromTo($dateFrom, $dateTo);
+
+        foreach ($weekIncomeTransactions as $income) {
+            $transactionDailyTotals[$income->transaction_date]['income'] = $income->income_total;
+            $incomeTotal += $income->income_total;
         }
 
-        return [$total, $incomeTotals];
+        foreach ($weekExpenseTransactions as $expense) {
+            $transactionDailyTotals[$expense->transaction_date]['expense'] = $expense->expense_total;
+            $expenseTotal += $expense->expense_total;
+        }
+
+        return [$incomeTotal, $expenseTotal, $transactionDailyTotals];
     }
 
     /**
@@ -80,7 +99,9 @@ class DashboardController extends Controller
 
             $today = date('Y-m-d', $todayUnixTimeStamp);
 
-            $days[$today]['total'] = 0;
+            $days[$today]['income'] = 0;
+
+            $days[$today]['expense'] = 0;
 
             $days[$today]['date'] = date('M-j', $todayUnixTimeStamp);
         }

@@ -37,10 +37,11 @@
                         <div class="form-group">
                             {!! Form::label('type', 'Expense Type') !!} <br>
                             {!! Form::select(
-                            'type',
-                            ['gas' => 'Gas', 'others' => 'Others'],
-                            'gas',
-                            ['class' => 'form-control']) !!}
+                                'type',
+                                ['gas' => 'Gas','load' => 'Load', 'others' => 'Others'],
+                                'gas',
+                                ['class' => 'form-control']
+                            ) !!}
                         </div>
 
                         <div class="form-group">
