@@ -5,7 +5,6 @@ namespace TsuperNgBuhayTNVS\Repositories\Eloquent;
 use Illuminate\Support\Facades\DB;
 use TsuperNgBuhayTNVS\Models\IncomeTransaction;
 use TsuperNgBuhayTNVS\Repositories\Interfaces\IncomeTransactionInterface;
-use Carbon\Carbon;
 
 class IncomeTransactionEloquent implements IncomeTransactionInterface
 {
@@ -51,7 +50,7 @@ class IncomeTransactionEloquent implements IncomeTransactionInterface
      */
     public function getTransactionsFromTo($from, $to)
     {
-        return $this->income->select(DB::raw('SUM(fare) AS total, CAST(transaction_date_time AS date) AS transaction_date'))
+        return $this->income->select(DB::raw('SUM(fare) AS income_total, CAST(transaction_date_time AS date) AS transaction_date'))
             ->whereBetween('transaction_date_time', [$from, $to])
             ->groupBy(DB::raw('CAST(transaction_date_time AS date)'))
             ->get();
