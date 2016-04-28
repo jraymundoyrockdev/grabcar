@@ -6,11 +6,11 @@
     </h2>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-8">
             <section class="widget">
                 <header>
                     <h4>
-                        <i class="fa fa-cogs"></i> Create New Income Transaction
+                        <i class="fa fa-list-alt"></i> Create New Income Transaction
                     </h4>
                 </header>
 
@@ -38,14 +38,14 @@
                             {!! Form::label('type', 'Income Type') !!} <br>
                             {!! Form::select(
                             'type',
-                            ['grab' => 'GRAB', 'rent' => 'RENT'],
+                            $incomeList,
                             'grab',
                             ['class' => 'form-control']) !!}
                         </div>
 
                         <div class="form-group">
-                            {!! Form::label('fare', 'Rider Fare') !!}
-                            {!! Form::text('fare', '0', ['class' => 'form-control']) !!}
+                            {!! Form::label('amount', 'Amount') !!}
+                            {!! Form::text('amount', '0', ['class' => 'form-control']) !!}
                         </div>
 
                         <div class="form-group">
@@ -65,7 +65,7 @@
                         <div class="form-actions">
                             <div class="row text-align-right">
                                 <div class="col-sm-8 col-sm-offset-4">
-                                    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+                                    {!! Form::submit('Save Transaction', ['class' => 'btn btn-primary']) !!}
                                     {!! Html::linkRoute('income.create', 'Cancel',[], ['class' => 'btn btn-default']) !!}
                                 </div>
                             </div>

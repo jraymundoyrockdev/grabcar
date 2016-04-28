@@ -13,6 +13,15 @@ class ExpenseTransactionsController extends Controller
      */
     private $expense;
 
+    private $expenseList = [
+        'gas' => 'Gas',
+        'load' => 'Sim Card Load',
+        'rent' => 'Driver\'s Rent',
+        'top_up' => 'Grab Top Up',
+        'car_wash' => 'Car Wash',
+        'driver_salary' => 'Driver Salary'
+    ];
+
     /**
      * IncomeTransactionsController constructor.
      * @param ExpenseTransactionInterface $expense
@@ -24,7 +33,7 @@ class ExpenseTransactionsController extends Controller
 
     public function create()
     {
-        return view('expense.create');
+        return view('expense.create', ['expenseList' => $this->expenseList]);
     }
 
     /**

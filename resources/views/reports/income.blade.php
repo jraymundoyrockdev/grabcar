@@ -31,7 +31,7 @@
                             @forelse($incomes as $income)
                                 <tr>
                                     <td>{!! $income->transaction_date_time !!}</td>
-                                    <td>{!! $income->fare !!}</td>
+                                    <td>{!! $income->amount !!}</td>
                                     <td class="width-150">{!! $income->type !!}</td>
                                     <td class="hidden-xs">{!! $income->remarks !!}</td>
                                 </tr>

@@ -10,7 +10,7 @@ class ExpenseTransactionEloquentTest extends TestCase
     use DatabaseTransactions, MockeryPHPUnitIntegration;
 
     /** @test */
-    public function it_returns_a_user_when_saved()
+    public function it_returns_an_expense_when_saved()
     {
         $input = factory(ExpenseTransaction::class)->make()->toArray();
 

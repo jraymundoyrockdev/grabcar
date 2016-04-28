@@ -6,11 +6,11 @@
     </h2>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-8">
             <section class="widget">
                 <header>
                     <h4>
-                        <i class="fa fa-cogs"></i> Create New Expense Transaction
+                        <i class="fa fa-list-alt"></i> Create New Expense Transaction
                     </h4>
                 </header>
 
@@ -38,7 +38,7 @@
                             {!! Form::label('type', 'Expense Type') !!} <br>
                             {!! Form::select(
                                 'type',
-                                ['gas' => 'Gas','load' => 'Load', 'others' => 'Others'],
+                                $expenseList,
                                 'gas',
                                 ['class' => 'form-control']
                             ) !!}
@@ -66,7 +66,7 @@
                         <div class="form-actions">
                             <div class="row text-align-right">
                                 <div class="col-sm-8 col-sm-offset-4">
-                                    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+                                    {!! Form::submit('Save Transaction', ['class' => 'btn btn-primary']) !!}
                                     {!! Html::linkRoute('expense.index', 'Cancel',[], ['class' => 'btn btn-default']) !!}
                                 </div>
                             </div>

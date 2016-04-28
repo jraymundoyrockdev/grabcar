@@ -2,7 +2,7 @@
 
 $factory->define(\TsuperNgBuhayTNVS\Models\IncomeTransaction::class, function (Faker\Generator $faker) {
     return [
-        'fare' => $faker->randomDigitNotNull,
+        'amount' => $faker->randomDigitNotNull,
         'transaction_date_time' => $faker->dateTime,
         'discount' => $faker->randomDigitNotNull,
         'created_by' => $faker->numberBetween(0, 10),

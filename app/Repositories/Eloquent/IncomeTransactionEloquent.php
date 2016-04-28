@@ -48,11 +48,25 @@ class IncomeTransactionEloquent implements IncomeTransactionInterface
      * @param $to
      * @return mixed
      */
-    public function getTransactionsFromTo($from, $to)
+    public function getTransactionsFromTo($from = null, $to = null)
     {
-        return $this->income->select(DB::raw('SUM(fare) AS income_total, CAST(transaction_date_time AS date) AS transaction_date'))
+        return $this->income->select(DB::raw('SUM(amount) AS income_total, CAST(transaction_date_time AS date) AS transaction_date'))
             ->whereBetween('transaction_date_time', [$from, $to])
             ->groupBy(DB::raw('CAST(transaction_date_time AS date)'))
+            ->get();
+    }
+
+    /**
+     * Get detailed income transaction
+     *
+     * @param int $from
+     * @param $to
+     * @return mixed
+     */
+    public function getDetailedTransactions($from = null, $to = null)
+    {
+        return $this->income->select(DB::raw('id, amount, type, CAST(transaction_date_time AS date) AS transaction_date'))
+            ->whereBetween('transaction_date_time', [$from, $to])
             ->get();
     }
 

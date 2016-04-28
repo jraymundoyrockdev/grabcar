@@ -13,6 +13,15 @@ class IncomeTransactionsController extends Controller
      */
     private $income;
 
+    private $incomeList = [
+        'grab_cash' => 'Grab Cash',
+        'grab_card' => 'Grab Card',
+        'grab_incentives' => 'Grab Incentives',
+        'uber_cash' => 'Uber Cash',
+        'uber_card' => 'Uber Card',
+        //'rent' => 'Rent'
+    ];
+
     /**
      * IncomeTransactionsController constructor.
      * @param IncomeTransactionInterface $income
@@ -24,7 +33,7 @@ class IncomeTransactionsController extends Controller
 
     public function create()
     {
-        return view('income.create');
+        return view('income.create', ['incomeList' => $this->incomeList]);
     }
 
     /**

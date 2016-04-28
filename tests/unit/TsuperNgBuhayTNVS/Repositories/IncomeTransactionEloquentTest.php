@@ -10,7 +10,7 @@ class IncomeTransactionEloquentEloquent extends TestCase
     use DatabaseTransactions, MockeryPHPUnitIntegration;
 
     /** @test */
-    public function it_returns_a_user_when_saved()
+    public function it_returns_an_income_when_saved()
     {
         $input = factory(IncomeTransaction::class)->make()->toArray();
 

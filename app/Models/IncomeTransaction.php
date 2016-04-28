@@ -9,7 +9,7 @@ class IncomeTransaction extends Model
     protected $table = 'income_transactions';
 
     protected $fillable = [
-        'fare',
+        'amount',
         'transaction_date_time',
         'discount',
         'remarks',

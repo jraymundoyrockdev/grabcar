@@ -14,7 +14,7 @@ class IncomeTransactionsControllerTest extends TestCase
 
         $this->post('/income', $input)
             ->seeInDatabase('income_transactions', [
-                'fare' => $input['fare'],
+                'amount' => $input['amount'],
                 'transaction_date_time' => $input['transaction_date_time'],
                 'discount' => $input['discount'],
                 'created_by' => $input['created_by'],
@@ -27,13 +27,13 @@ class IncomeTransactionsControllerTest extends TestCase
     public function it_returns_to_create_form_with_errors_if_validation_failed()
     {
         $input = factory(\TsuperNgBuhayTNVS\Models\IncomeTransaction::class)->make([
-            'fare' => '',
+            'amount' => '',
             'type' => '',
             'created_by' => '',
             'transaction_date_time' => ''
         ])->toArray();
 
-        $this->post('/income', $input)->assertSessionHasErrors(['fare', 'type', 'created_by', 'transaction_date_time']);
+        $this->post('/income', $input)->assertSessionHasErrors(['amount', 'type', 'created_by', 'transaction_date_time']);
 
     }
 

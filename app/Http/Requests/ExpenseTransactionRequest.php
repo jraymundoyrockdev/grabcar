@@ -34,7 +34,7 @@ class ExpenseTransactionRequest extends Request
         return [
             'amount.required' => 'Amount is required',
             'amount.integer' => 'Amount must be a number',
-            'amount.min' => 'Fare must be at least 1 peso',
+            'amount.min' => 'Amount must be at least 1 peso',
         ];
     }
 }

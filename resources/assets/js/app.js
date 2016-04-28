@@ -112,20 +112,51 @@ function initPjax() {
             $('.paginate_button').addClass('btn btn-xs btn-primary');
 
 
-            $('#container').highcharts({
+            $('#totals').highcharts({
+                colors: ['#4ab0ce', '#f25118', '#efb31d', '#e6e6e6', '#f2c34d', '#4ab0ce', '#4e91ce'],
                 data: {
-                    table: 'datatable'
+                    table: 'totals_list'
                 },
                 chart: {
-                    type: 'column'
+                    type: 'areaspline',
+                    backgroundColor: null,
+                    style: {
+                        color: '#FFFFFF'
+                    }
                 },
                 title: {
-                    text: 'Daily Total Transactions'
+                    text: 'Daily Total Transactions',
+                    style: {
+                        color: '#FFFFFF'
+                    }
                 },
                 yAxis: {
                     allowDecimals: false,
                     title: {
-                        text: 'Pesos'
+                        text: 'Pesos',
+                        style: {
+                            'color': '#FFFFFF'
+                        }
+                    },
+                    labels: {
+                        style: {
+                            'color': '#FFFFFF',
+                            'font-size': '13px'
+                        }
+                    },
+                    gridLineColor: '#A9A9A9'
+                },
+                xAxis: {
+                    labels: {
+                        style: {
+                            'color': '#FFFFFF',
+                            'font-size': '13px'
+                        }
+                    },
+                },
+                legend: {
+                    itemStyle: {
+                        color: '#FFFFFF'
                     }
                 },
                 exporting: {
@@ -137,11 +168,128 @@ function initPjax() {
                 tooltip: {
                     formatter: function () {
                         return '<b>' + this.series.name + '</b><br/>' +
-                            this.point.y + ' ' + this.point.name.toLowerCase();
+                            $.number(this.point.y, 2);
+                    }
+                }
+            });
+
+            $('#detailed_income_transactions').highcharts({
+                colors: ['#4ab0ce', '#f25118', '#efb31d', '#e6e6e6', '#f2c34d', '#4ab0ce', '#4e91ce'],
+                data: {
+                    table: 'detailed_income_transactions_list'
+                },
+                chart: {
+                    type: 'column',
+                    backgroundColor: null,
+                    style: {
+                        color: '#FFFFFF'
                     }
                 },
+                title: {
+                    text: 'Detailed Daily Income Transactions',
+                    style: {
+                        color: '#FFFFFF'
+                    }
+                },
+                yAxis: {
+                    allowDecimals: false,
+                    title: {
+                        text: 'Pesos',
+                        style: {
+                            'color': '#FFFFFF'
+                        }
+                    },
+                    labels: {
+                        style: {
+                            'color': '#FFFFFF',
+                            'font-size': '13px'
+                        }
+                    }
+                },
+                xAxis: {
+                    labels: {
+                        style: {
+                            'color': '#FFFFFF',
+                            'font-size': '13px'
+                        }
+                    }
+                },
+                legend: {
+                    itemStyle: {
+                        color: '#FFFFFF'
+                    }
+                },
+                exporting: {
+                    enabled: true
+                },
+                credits: {
+                    enabled: false
+                },
+                tooltip: {
+                    formatter: function () {
+                        return '<b>' + this.series.name + '</b><br/>' +
+                            $.number(this.point.y, 2);
+                    }
+                }
+            });
 
-                polar: true
+            $('#detailed_expense_transactions').highcharts({
+                data: {
+                    table: 'detailed_expense_transactions_list'
+                },
+                chart: {
+                    type: 'column',
+                    backgroundColor: null,
+                    style: {
+                        color: '#FFFFFF'
+                    }
+                },
+                title: {
+                    text: 'Detailed Daily Expense Transactions',
+                    style: {
+                        'color': '#FFFFFF'
+                    }
+                },
+                yAxis: {
+                    allowDecimals: false,
+                    title: {
+                        text: 'Pesos',
+                        style: {
+                            'color': '#FFFFFF'
+                        }
+                    },
+                    labels: {
+                        style: {
+                            'color': '#FFFFFF',
+                            'font-size': '13px'
+                        }
+                    }
+                },
+                xAxis: {
+                    labels: {
+                        style: {
+                            'color': '#FFFFFF',
+                            'font-size': '13px'
+                        }
+                    }
+                },
+                legend: {
+                    itemStyle: {
+                        color: '#FFFFFF'
+                    }
+                },
+                exporting: {
+                    enabled: true
+                },
+                credits: {
+                    enabled: false
+                },
+                tooltip: {
+                    formatter: function () {
+                        return '<b>' + this.series.name + '</b><br/>' +
+                            $.number(this.point.y, 2);
+                    }
+                }
             });
 
             $(document).trigger("pjax-app:loaded"), l.log("scripts loaded.")

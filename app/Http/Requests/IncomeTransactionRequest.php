@@ -22,7 +22,7 @@ class IncomeTransactionRequest extends Request
     public function rules()
     {
         return [
-            'fare' => 'required|integer|min:1',
+            'amount' => 'required|integer|min:1',
             'type' => 'required',
             'created_by' => 'required|integer',
             'transaction_date_time' => 'required'
@@ -32,8 +32,8 @@ class IncomeTransactionRequest extends Request
     public function messages()
     {
         return [
-            'fare.integer' => 'Fare must be a number',
-            'fare.min' => 'Fare must be at least 1 peso',
+            'amount.integer' => 'Amount must be a number',
+            'amount.min' => 'Amount must be at least 1 peso',
         ];
     }
 }

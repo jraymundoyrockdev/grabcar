@@ -8,6 +8,23 @@ use TsuperNgBuhayTNVS\Repositories\Interfaces\ExpenseTransactionInterface;
 
 class DashboardController extends Controller
 {
+    private $daysBank = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+
+    private $fieldReports = [
+        'income-details' => [
+            'grab_cash' => 0,
+            'grab_card' => 0,
+            'grab_incentives' => 0,
+            'uber_cash' => 0,
+            'uber_card' => 0,
+            'rent' => 0
+        ],
+        'totals' => [
+            'income' => 0,
+            'expense' => 0
+        ]
+    ];
+
     /**
      * @var IncomeTransactionInterface
      */
@@ -31,12 +48,39 @@ class DashboardController extends Controller
     public function index()
     {
         list($incomeTotal, $expenseTotal, $transactionDailyTotals) = $this->getTransactionTotals();
-
+        list($incomeDetailedTransactions, $incomeDetailTotals) = $this->getIncomeTransactionDetails();
+        
         return view('dashboard.index', [
             'incomeTotal' => $incomeTotal,
             'expenseTotal' => $expenseTotal,
-            'transactionDailyTotals' => $transactionDailyTotals
+            'transactionDailyTotals' => $transactionDailyTotals,
+            'incomeDetailedTransactions' => $incomeDetailedTransactions,
+            'incomeDetailTotals' => $incomeDetailTotals
         ]);
+    }
+
+    /**
+     * @param string $from
+     * @param string $to
+     * @return array
+     */
+    private function getIncomeTransactionDetails($from = 'monday', $to = 'sunday')
+    {
+        $incomeDetailTotals = $this->fieldReports['income-details'];
+
+        $incomeTransactions = $this->income->getDetailedTransactions(
+            $this->getDateThisWeek($from),
+            $this->getDateThisWeek($to)
+        );
+
+        $incomeTransactionDaily = $this->buildZeroFieldsReport('income-details');
+
+        foreach ($incomeTransactions as $income) {
+            $incomeTransactionDaily[$income->transaction_date][$income->type] += $income->amount;
+            $incomeDetailTotals[$income->type]+=$income->amount;
+        }
+
+        return [$incomeTransactionDaily, $incomeDetailTotals];
     }
 
     /**
@@ -51,13 +95,17 @@ class DashboardController extends Controller
         $incomeTotal = 0;
         $expenseTotal = 0;
 
-        $dateFrom = $this->getDateThisWeek($from);
-        $dateTo = $this->getDateThisWeek($to);
+        $transactionDailyTotals = $this->buildZeroFieldsReport('totals');
 
-        $transactionDailyTotals = $this->createZeroTotalsPerDay();
+        $weekIncomeTransactions = $this->income->getTransactionsFromTo(
+            $this->getDateThisWeek($from),
+            $this->getDateThisWeek($to)
+        );
 
-        $weekIncomeTransactions = $this->income->getTransactionsFromTo($dateFrom, $dateTo);
-        $weekExpenseTransactions = $this->expense->getTransactionsFromTo($dateFrom, $dateTo);
+        $weekExpenseTransactions = $this->expense->getTransactionsFromTo(
+            $this->getDateThisWeek($from),
+            $this->getDateThisWeek($to)
+        );
 
         foreach ($weekIncomeTransactions as $income) {
             $transactionDailyTotals[$income->transaction_date]['income'] = $income->income_total;
@@ -84,28 +132,25 @@ class DashboardController extends Controller
     }
 
     /**
-     * Create zero totals per day
-     *
+     * @param string $reportType
      * @return array
      */
-    private function createZeroTotalsPerDay()
+    private function buildZeroFieldsReport($reportType = 'totals')
     {
         $days = [];
-        $daysBank = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
-        foreach ($daysBank as $day) {
+        foreach ($this->daysBank as $day) {
 
             $todayUnixTimeStamp = strtotime($day . ' this week');
 
             $today = date('Y-m-d', $todayUnixTimeStamp);
 
-            $days[$today]['income'] = 0;
-
-            $days[$today]['expense'] = 0;
+            $days[$today] = $this->fieldReports[$reportType];
 
             $days[$today]['date'] = date('M-j', $todayUnixTimeStamp);
         }
 
         return $days;
     }
+
 }

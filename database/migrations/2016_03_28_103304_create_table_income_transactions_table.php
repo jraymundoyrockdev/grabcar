@@ -14,7 +14,7 @@ class CreateTableIncomeTransactionsTable extends Migration
     {
         Schema::create('income_transactions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('fare');
+            $table->integer('amount');
             $table->timestamp('transaction_date_time')->useCurrent = true;
             $table->integer('discount')->default(0);
             $table->integer('created_by');
