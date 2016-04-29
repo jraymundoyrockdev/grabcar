@@ -10,4 +10,18 @@ interface ExpenseTransactionInterface
      */
     public function create($payload);
 
+    /**
+     * @param $from
+     * @param $to
+     * @return mixed
+     */
+    public function getTransactionsFromTo($from, $to);
+
+    /**
+     * @param null $from
+     * @param null $to
+     * @return mixed
+     */
+    public function getDetailedTransactions($from = null, $to = null);
+
 }

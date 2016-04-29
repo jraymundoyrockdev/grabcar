@@ -8,17 +8,16 @@
 
     <div class="row">
         <div class="col-lg-12">
-            @include('dashboard.partials.graph_totals',['transactionDailyTotals' => $transactionDailyTotals])
+            @include('dashboard.partials.graph_totals')
         </div>
 
-        <div class="col-lg-12">
-            @include('dashboard.partials.graph_income_details',['incomeDetailedTransactions' => $incomeDetailedTransactions])
+        <div class="col-lg-6">
+            @include('dashboard.partials.graph_income_details')
         </div>
 
-        <div class="col-lg-12">
-            @include('dashboard.partials.graph_expense_details',[])
+        <div class="col-lg-6">
+            @include('dashboard.partials.graph_expense_details')
         </div>
-
     </div>
 
 @endsection
@@ -29,7 +28,7 @@
 
         $(function () {
             $('#totals').highcharts({
-                colors: ['#4ab0ce', '#f25118', '#efb31d', '#e6e6e6', '#f2c34d', '#4ab0ce', '#4e91ce'],
+                colors: ['#4ab0ce', '#f25118', '#efb31d', '#e6e6e6', '#f2c34d', '#A308FD'],
                 data: {
                     table: 'totals_list'
                 },
@@ -90,7 +89,7 @@
             });
 
             $('#detailed_income_transactions').highcharts({
-                colors: ['#4ab0ce', '#f25118', '#efb31d', '#e6e6e6', '#f2c34d', '#4ab0ce', '#4e91ce'],
+                colors: ['#4ab0ce', '#f25118', '#efb31d', '#e6e6e6', '#800000', '#A308FD'],
                 data: {
                     table: 'detailed_income_transactions_list'
                 },
@@ -150,6 +149,7 @@
             });
 
             $('#detailed_expense_transactions').highcharts({
+                colors: ['#4ab0ce', '#f25118', '#efb31d', '#e6e6e6', '#800000', '#A308FD'],
                 data: {
                     table: 'detailed_expense_transactions_list'
                 },
@@ -163,7 +163,7 @@
                 title: {
                     text: 'Detailed Daily Expense Transactions',
                     style: {
-                        'color': '#FFFFFF'
+                        color: '#FFFFFF'
                     }
                 },
                 yAxis: {

@@ -3,12 +3,12 @@
 namespace TsuperNgBuhayTNVS\Http\Controllers;
 
 use TsuperNgBuhayTNVS\Http\Requests;
-use TsuperNgBuhayTNVS\Repositories\Interfaces\IncomeTransactionInterface;
 use TsuperNgBuhayTNVS\Repositories\Interfaces\ExpenseTransactionInterface;
+use TsuperNgBuhayTNVS\Repositories\Interfaces\IncomeTransactionInterface;
 
 class DashboardController extends Controller
 {
-    private $daysBank = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+    private $daysList = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
     private $fieldReports = [
         'income-details' => [
@@ -18,6 +18,14 @@ class DashboardController extends Controller
             'uber_cash' => 0,
             'uber_card' => 0,
             'rent' => 0
+        ],
+        'expense-details' => [
+            'gas' => 0,
+            'load' => 0,
+            'rent' => 0,
+            'top_up' => 0,
+            'car_wash' => 0,
+            'driver_salary' => 0
         ],
         'totals' => [
             'income' => 0,
@@ -49,13 +57,16 @@ class DashboardController extends Controller
     {
         list($incomeTotal, $expenseTotal, $transactionDailyTotals) = $this->getTransactionTotals();
         list($incomeDetailedTransactions, $incomeDetailTotals) = $this->getIncomeTransactionDetails();
-        
+        list($expenseDetailedTransactions, $expenseDetailTotals) = $this->getExpenseTransactionDetails();
+
         return view('dashboard.index', [
             'incomeTotal' => $incomeTotal,
             'expenseTotal' => $expenseTotal,
             'transactionDailyTotals' => $transactionDailyTotals,
             'incomeDetailedTransactions' => $incomeDetailedTransactions,
-            'incomeDetailTotals' => $incomeDetailTotals
+            'incomeDetailTotals' => $incomeDetailTotals,
+            'expenseDetailedTransactions' => $expenseDetailedTransactions,
+            'expenseDetailTotals' => $expenseDetailTotals
         ]);
     }
 
@@ -77,10 +88,34 @@ class DashboardController extends Controller
 
         foreach ($incomeTransactions as $income) {
             $incomeTransactionDaily[$income->transaction_date][$income->type] += $income->amount;
-            $incomeDetailTotals[$income->type]+=$income->amount;
+            $incomeDetailTotals[$income->type] += $income->amount;
         }
 
         return [$incomeTransactionDaily, $incomeDetailTotals];
+    }
+
+    /**
+     * @param string $from
+     * @param string $to
+     * @return array
+     */
+    private function getExpenseTransactionDetails($from = 'monday', $to = 'sunday')
+    {
+        $expenseDetailTotals = $this->fieldReports['expense-details'];
+
+        $expenseTransactions = $this->expense->getDetailedTransactions(
+            $this->getDateThisWeek($from),
+            $this->getDateThisWeek($to)
+        );
+
+        $expenseTransactionDaily = $this->buildZeroFieldsReport('expense-details');
+
+        foreach ($expenseTransactions as $expense) {
+            $expenseTransactionDaily[$expense->transaction_date][$expense->type] += $expense->amount;
+            $expenseDetailTotals[$expense->type] += $expense->amount;
+        }
+
+        return [$expenseTransactionDaily, $expenseDetailTotals];
     }
 
     /**
@@ -139,7 +174,7 @@ class DashboardController extends Controller
     {
         $days = [];
 
-        foreach ($this->daysBank as $day) {
+        foreach ($this->daysList as $day) {
 
             $todayUnixTimeStamp = strtotime($day . ' this week');
 

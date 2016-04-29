@@ -18,14 +18,14 @@
             </thead>
             <tbody>
 
-            @foreach($incomeDetailedTransactions as $transaction)
+            @foreach($incomeDetailedTransactions as $income)
                 <tr>
-                    <th>{!! $transaction['date'] !!}</th>
-                    <td>{!! $transaction['grab_cash'] !!}</td>
-                    <td>{!! $transaction['grab_card']!!}</td>
-                    <td>{!! $transaction['grab_incentives'] !!}</td>
-                    <td>{!! $transaction['uber_cash'] !!}</td>
-                    <td>{!! $transaction['uber_card'] !!}</td>
+                    <th>{!! $income['date'] !!}</th>
+                    <td>{!! $income['grab_cash'] !!}</td>
+                    <td>{!! $income['grab_card']!!}</td>
+                    <td>{!! $income['grab_incentives'] !!}</td>
+                    <td>{!! $income['uber_cash'] !!}</td>
+                    <td>{!! $income['uber_card'] !!}</td>
                 </tr>
             @endforeach
 
@@ -43,7 +43,7 @@
                     <div class="value">{!! number_format($incomeDetailTotals['grab_card']) !!}</div>
                 </div>
                 <div class="col-sm-2 col-xs-2">
-                    <div class="key"><i class="fa fa-credit-card"></i> Grab Incen</div>
+                    <div class="key"><i class="fa fa-plus"></i> Grab Incen</div>
                     <div class="value">{!! number_format($incomeDetailTotals['grab_incentives']) !!}</div>
                 </div>
 
@@ -57,18 +57,11 @@
                     <div class="value">{!! number_format($incomeDetailTotals['uber_card']) !!}</div>
                 </div>
                 <div class="col-sm-2 col-xs-2">
-                    <div class="key"><i class="fa fa-hotel"></i> House Rent</div>
+                    <div class="key"><i class="fa fa-car"></i> Car Rent</div>
                     <div class="value">{!! number_format($incomeDetailTotals['rent']) !!}</div>
                 </div>
-
             </div>
-            <div class="row">
-
-            </div>
-
-
         </div>
-
 
     </div>
 </section>

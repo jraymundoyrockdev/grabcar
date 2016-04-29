@@ -45,4 +45,18 @@ class ExpenseTransactionEloquent implements ExpenseTransactionInterface
             ->groupBy(DB::raw('CAST(transaction_date_time AS date)'))
             ->get();
     }
+
+    /**
+     * Get detailed expense transaction
+     *
+     * @param int $from
+     * @param $to
+     * @return mixed
+     */
+    public function getDetailedTransactions($from = null, $to = null)
+    {
+        return $this->expense->select(DB::raw('id, amount, type, CAST(transaction_date_time AS date) AS transaction_date'))
+            ->whereBetween('transaction_date_time', [$from, $to])
+            ->get();
+    }
 }

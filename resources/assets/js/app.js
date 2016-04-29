@@ -113,7 +113,7 @@ function initPjax() {
 
 
             $('#totals').highcharts({
-                colors: ['#4ab0ce', '#f25118', '#efb31d', '#e6e6e6', '#f2c34d', '#4ab0ce', '#4e91ce'],
+                colors: ['#4ab0ce', '#f25118', '#efb31d', '#e6e6e6', '#f2c34d', '#A308FD'],
                 data: {
                     table: 'totals_list'
                 },
@@ -174,7 +174,7 @@ function initPjax() {
             });
 
             $('#detailed_income_transactions').highcharts({
-                colors: ['#4ab0ce', '#f25118', '#efb31d', '#e6e6e6', '#f2c34d', '#4ab0ce', '#4e91ce'],
+                colors: ['#4ab0ce', '#f25118', '#efb31d', '#e6e6e6', '#800000', '#A308FD'],
                 data: {
                     table: 'detailed_income_transactions_list'
                 },
@@ -234,6 +234,7 @@ function initPjax() {
             });
 
             $('#detailed_expense_transactions').highcharts({
+                colors: ['#4ab0ce', '#f25118', '#efb31d', '#e6e6e6', '#800000', '#A308FD'],
                 data: {
                     table: 'detailed_expense_transactions_list'
                 },
@@ -247,7 +248,7 @@ function initPjax() {
                 title: {
                     text: 'Detailed Daily Expense Transactions',
                     style: {
-                        'color': '#FFFFFF'
+                        color: '#FFFFFF'
                     }
                 },
                 yAxis: {
