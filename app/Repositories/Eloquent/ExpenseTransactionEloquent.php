@@ -34,11 +34,11 @@ class ExpenseTransactionEloquent implements ExpenseTransactionInterface
     /**
      * Get last transactions from to date
      *
-     * @param int $from
-     * @param $to
+     * @param null $from
+     * @param null $to
      * @return mixed
      */
-    public function getTransactionsFromTo($from, $to)
+    public function getTransactionsFromTo($from = null, $to = null)
     {
         return $this->expense->select(DB::raw('SUM(amount) AS expense_total, CAST(transaction_date_time AS date) AS transaction_date'))
             ->whereBetween('transaction_date_time', [$from, $to])
